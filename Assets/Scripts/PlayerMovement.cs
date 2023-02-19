@@ -43,10 +43,9 @@ public class PlayerMovement : MonoBehaviour
         MovementState state;
         if (dirX != 0 || dirY != 0) state = MovementState.RUNNING;
         else state = MovementState.IDLE;
-
-        facingLeft = dirX < 0 || (facingLeft && dirX == 0);
-        sprite.flipX = facingLeft;
-
         anim.SetInteger("state", (int)state);
+
+        if (dirX == 0) return;
+        sprite.flipX = dirX < 0;
     }
 }
