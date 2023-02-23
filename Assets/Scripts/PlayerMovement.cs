@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sprite;
     private float dirX, dirY;
-    private bool facingLeft = false;
 
     [SerializeField] private float velocity = 10;
 
