@@ -14,7 +14,7 @@ public class Shooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCam = GameObject.FindGameObjectsWithTag("MainCamera")[0].GetComponent<Camera>();
+        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -30,9 +30,10 @@ public class Shooting : MonoBehaviour
 
         if (!canFire) {
             timer += Time.deltaTime;
-            if (timer >= timeBetweenShots)
+            if (timer > timeBetweenShots)
             {
                 canFire = true;
+                timer = 0;
             }
         }
 

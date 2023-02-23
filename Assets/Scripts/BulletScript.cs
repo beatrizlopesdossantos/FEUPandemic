@@ -12,7 +12,7 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCam = GameObject.FindGameObjectsWithTag("MainCamera")[0].GetComponent<Camera>();
+        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = mousePos - transform.position;
@@ -26,14 +26,19 @@ public class BulletScript : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 10) {
+        if (timer >= 7) {
+            // Debug.Log("Bullet Destroyed");
             Destroy(gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Virus")) {
+            // Destroy(collision.gameObject);
+            Debug.Log(collision.gameObject.name + collision.gameObject.tag);
+            // Debug.Log("Bullet Destroyed");
             Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }
