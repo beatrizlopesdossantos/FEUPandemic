@@ -2344,6 +2344,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Virus
       objectReference: {fileID: 0}
+    - target: {fileID: 9036501334649242957, guid: 55b8a7959154e0f178daa12630fea897, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55b8a7959154e0f178daa12630fea897, type: 3}
 --- !u!4 &954601857 stripped
@@ -2755,7 +2759,7 @@ TilemapRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612328223}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
