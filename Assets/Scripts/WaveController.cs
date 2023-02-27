@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveController : MonoBehaviour {
 
@@ -9,10 +10,11 @@ public class WaveController : MonoBehaviour {
     [SerializeField] private WaveEnemyInfo[] waveEnemies;
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private float timeBetweenWaves = 5f;
+    [SerializeField] private Text waveText;
 
     private WaveState state;
     private EnemySpawner[] enemySpawners;
-    private int currentWave = 0; // TODO: Display wave (and maybe countdown)
+    private int currentWave = 0;
     private float waveCountdown;
     private float waveCheckDelay = 1f;
 
@@ -20,6 +22,7 @@ public class WaveController : MonoBehaviour {
         waveCountdown = timeBetweenWaves;
         enemySpawners = new EnemySpawner[waveEnemies.Length];
         state = WaveState.WAITING;
+        updateWaveText();
     }
 
     private void Update() {
@@ -47,6 +50,7 @@ public class WaveController : MonoBehaviour {
                 }
                 break;
         }
+        updateWaveText();
     }
 
     private void StartNewWave() {
@@ -92,13 +96,26 @@ public class WaveController : MonoBehaviour {
         }
     }
 
-    bool IsWaveOver()
+    private bool IsWaveOver()
     {
         waveCheckDelay -= Time.deltaTime;
         if (waveCheckDelay <= 0f) {
             return GameObject.FindGameObjectWithTag("Virus") == null;
         }
         return false;
+    }
+
+    private void updateWaveText() {
+        switch (state)
+        {
+            case WaveState.WAITING:
+                waveText.text = $"Next wave in: {waveCountdown:0.00}";
+                break;
+            case WaveState.SPAWNING:
+            case WaveState.PLAYING:
+                waveText.text = $"Wave {currentWave}";
+                break;
+        }
     }
 }
 
