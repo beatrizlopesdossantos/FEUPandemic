@@ -102,17 +102,18 @@ public class WaveController : MonoBehaviour {
     }
 }
 
-[System.Serializable] // TODO: field defaults not appearing in unity
+// Default values work unexpectedly: https://issuetracker.unity3d.com/issues/serializefield-list-objects-are-not-initialized-with-class-slash-struct-default-values-when-adding-objects-in-the-inspector-window
+[System.Serializable]
 public class WaveEnemyInfo
 {
     public Transform enemy;
-    [SerializeField] public int startAmount = 1;
-    [SerializeField] public float startRate = 1f;
-    [SerializeField] public int startWave = 1;
-    [SerializeField] public float amountMultiplier = 1.1f;
-    [SerializeField] public float rateMultiplier = 1.1f;
-    [SerializeField] public int maxAmount = 200;
-    [SerializeField] public float maxRate = 10f;
+    public int startAmount = 1;
+    public float startRate = 1f;
+    public int startWave = 1;
+    public float amountMultiplier = 1.1f;
+    public float rateMultiplier = 1.1f;
+    public int maxAmount = 200;
+    public float maxRate = 10f;
 }
 
 internal class EnemySpawner : ScriptableObject {
