@@ -34,11 +34,10 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Virus")) {
-            // Destroy(collision.gameObject);
-            Debug.Log(collision.gameObject.name + collision.gameObject.tag);
-            // Debug.Log("Bullet Destroyed");
             Destroy(gameObject);
             Destroy(collision.gameObject);
+        } else if (collision.gameObject.CompareTag("Terrain")) {
+            Destroy(gameObject);
         }
     }
 }

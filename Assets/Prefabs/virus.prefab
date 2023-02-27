@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3845841627356449919}
   - component: {fileID: 9036501334649242957}
   - component: {fileID: 3895392302121318514}
+  - component: {fileID: 418598930968011417}
   m_Layer: 0
   m_Name: virus
   m_TagString: Virus
@@ -292,11 +293,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7078099433667581583}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 200
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -305,3 +306,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &418598930968011417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7078099433667581583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c254c6afb94c147679e72336db444364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 1

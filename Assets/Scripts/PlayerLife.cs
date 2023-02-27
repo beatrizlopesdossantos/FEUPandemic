@@ -10,6 +10,8 @@ public class PlayerLife : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private AudioSource deathSound;
 
+    private bool isAlive = true;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -18,7 +20,7 @@ public class PlayerLife : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Virus")) {
+        if (collision.gameObject.CompareTag("Virus") && isAlive) {
             KillPlayer();
         }
     }
@@ -26,6 +28,7 @@ public class PlayerLife : MonoBehaviour
     private void KillPlayer() {
         rb.bodyType = RigidbodyType2D.Static;
         movement.enabled = false;
+        isAlive = false;
         anim.SetTrigger("death");
         deathSound.Play();
     }
