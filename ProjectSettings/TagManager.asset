@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Collectible
   - Virus
-  - Strawberry
   - Bullet
+  - Terrain
   layers:
   - Default
   - TransparentFX
@@ -44,6 +44,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 526840137
+    locked: 0
+  - name: Collectibles
+    uniqueID: 2647747103
     locked: 0
   - name: Default
     uniqueID: 0

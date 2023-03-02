@@ -15,7 +15,7 @@ public class ItemCollector : MonoBehaviour
             collectSound.Play();
             Destroy(collision.gameObject);
             items++;
-            itemText.text = $"Items: {items}";
+            itemText.text = $"x{items}";
         }
     }
 }

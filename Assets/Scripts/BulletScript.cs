@@ -27,7 +27,6 @@ public class BulletScript : MonoBehaviour
     {
         timer += Time.deltaTime;
         if (timer >= 7) {
-            // Debug.Log("Bullet Destroyed");
             Destroy(gameObject);
         }
     }
@@ -35,7 +34,8 @@ public class BulletScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Virus")) {
             Destroy(gameObject);
-            Destroy(collision.gameObject);
+            VirusLife virus = collision.gameObject.GetComponent<VirusLife>();
+            virus.handleHit();
         } else if (collision.gameObject.CompareTag("Terrain")) {
             Destroy(gameObject);
         }
