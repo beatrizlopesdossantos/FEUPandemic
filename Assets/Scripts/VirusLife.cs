@@ -5,6 +5,12 @@ using UnityEngine;
 public class VirusLife : MonoBehaviour
 {
     [SerializeField] private ItemInfo[] items;
+    [SerializeField] private int points = 100;
+    private ItemCollector collector;
+
+    private void Start() {
+        collector = GameObject.FindGameObjectWithTag("Player").GetComponent<ItemCollector>();
+    }
 
     public void handleHit() {
         Destroy(gameObject);
@@ -17,6 +23,8 @@ public class VirusLife : MonoBehaviour
                 break;
             }
         }
+
+        collector.IncreaseScore(points);
     }
 }
 

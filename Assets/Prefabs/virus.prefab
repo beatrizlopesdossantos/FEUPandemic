@@ -335,4 +335,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - item: {fileID: 1321917693560154382, guid: 1628d6a7707fc73e69738147aff8f132, type: 3}
-    chance: 0.5
+    chance: 0.2
+  points: 100
