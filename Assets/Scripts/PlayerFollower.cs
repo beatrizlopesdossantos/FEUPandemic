@@ -6,10 +6,14 @@ public class PlayerFollower : MonoBehaviour
 {
     private GameObject objectToFollow;
     private Animator anim;
+    [SerializeField] public int damage;
     [SerializeField] private float velocity = 1f;
+    [SerializeField] public int maxLife;
+    // public HealthBar healthBar;    
 
     private void Start()
     {
+        // healthBar.SetMaxHealth(100);
         objectToFollow = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
     }
