@@ -50535,6 +50535,7 @@ GameObject:
   - component: {fileID: 261695407}
   - component: {fileID: 261695406}
   - component: {fileID: 261695409}
+  - component: {fileID: 261695410}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -50649,7 +50650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261695397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7659354, y: -0.029791802, z: 0}
+  m_LocalPosition: {x: 9.95, y: 0.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50913,6 +50914,21 @@ MonoBehaviour:
   itemText: {fileID: 288646753}
   scoreText: {fileID: 1479439735}
   collectSound: {fileID: 261695407}
+--- !u!114 &261695410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261695397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39fe299579c32143ab3452d2949d5104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 3470309822287515359, guid: 04af8579c5c8c6049ba08aa40c3e5557, type: 3}
+  firePoint: {fileID: 1307976320}
+  timeBetweenShots: 0.5
 --- !u!1 &288646751
 GameObject:
   m_ObjectHideFlags: 0
@@ -51182,7 +51198,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.832899
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -51206,7 +51222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 10.715935, y: 0.6697918, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55957,13 +55973,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1253145567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39fe299579c32143ab3452d2949d5104, type: 3}
+  m_Script: {fileID: 11500000, guid: d8d18cfc12609a815aa0a23f4d9b77fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3470309822287515359, guid: 04af8579c5c8c6049ba08aa40c3e5557, type: 3}
-  bulletTransform: {fileID: 1307976320}
-  canFire: 1
-  timeBetweenShots: 1
 --- !u!1 &1257454423
 GameObject:
   m_ObjectHideFlags: 0

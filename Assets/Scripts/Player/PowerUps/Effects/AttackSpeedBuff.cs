@@ -9,13 +9,13 @@ public class AttackSpeedBuff : TemporaryEffect
 
     public override void Apply(GameObject target)
     {
-        Shooting movementController = target.GetComponent<Shooting>();
-        movementController.timeBetweenShots /= speedMultiplier;
+        Shooting shootingController = target.GetComponent<Shooting>();
+        shootingController.timeBetweenShots /= speedMultiplier;
     }
 
     public override void Remove(GameObject target)
     {
-        Shooting movementController = target.GetComponent<Shooting>();
-        movementController.timeBetweenShots *= speedMultiplier;
+        Shooting shootingController = target.GetComponent<Shooting>();
+        shootingController.timeBetweenShots *= speedMultiplier;
     }
 }
