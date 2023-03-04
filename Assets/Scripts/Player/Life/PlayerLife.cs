@@ -12,8 +12,9 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] private int maxLife = 100;
     public int currentLife;
     public HealthBar healthBar;
-
+    private bool isCollidingWithEnemy = false;
     private bool isAlive = true;
+    private int damage;
 
     private void Start()
     {
@@ -26,7 +27,16 @@ public class PlayerLife : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Virus") && isAlive) {
-            HurtPlayer(collision.gameObject.GetComponent<PlayerFollower>().damage);
+            isCollidingWithEnemy = true;
+            damage = collision.gameObject.GetComponent<PlayerFollower>().damage;
+            InvokeRepeating("HurtPlayer", 0.4f, 0.4f);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Virus") && isAlive) {
+            isCollidingWithEnemy = false;
+            CancelInvoke("HurtPlayer");
         }
     }
 
@@ -36,9 +46,11 @@ public class PlayerLife : MonoBehaviour
         isAlive = false;
         anim.SetTrigger("death");
         deathSound.Play();
+        CancelInvoke("HurtPlayer");
     }
 
-    private void HurtPlayer(int damage) {
+    private void HurtPlayer() {
+        if (!isCollidingWithEnemy) return;
         currentLife -= damage;
         healthBar.SetHealth(currentLife);
         if (currentLife <= 0) {
