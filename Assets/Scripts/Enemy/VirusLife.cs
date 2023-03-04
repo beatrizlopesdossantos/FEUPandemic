@@ -9,7 +9,7 @@ public class VirusLife : MonoBehaviour
     [SerializeField] private int points = 100;
     private ItemCollector collector;
     [SerializeField] private int maxHealth = 100;
-    public int currentHealth = 100;
+    public int currentHealth;
     public Slider slider;
     public GameObject healthBar;
 
@@ -17,13 +17,13 @@ public class VirusLife : MonoBehaviour
         collector = GameObject.FindGameObjectWithTag("Player").GetComponent<ItemCollector>();
         currentHealth = maxHealth;
         slider.maxValue = maxHealth;
-        slider.value = CalculateHealth();
+        slider.value = currentHealth;
         healthBar.SetActive(true);
     }
 
     float CalculateHealth()
     {
-        Debug.Log(currentHealth / maxHealth);
+        Debug.Log("ghhhhhhhhh" + currentHealth / maxHealth);
         return currentHealth / maxHealth;
     }
 
@@ -40,7 +40,7 @@ public class VirusLife : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        slider.value = CalculateHealth();
+        slider.value = currentHealth;
     }
 
     public void handleDeath() {
