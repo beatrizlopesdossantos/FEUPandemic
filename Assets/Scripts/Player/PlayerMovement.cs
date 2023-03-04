@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sprite;
     private float dirX, dirY;
 
-    [SerializeField] private float velocity = 10;
+    public float velocity = 10;
 
     // Start is called before the first frame update
     private void Start()
