@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Powerups/SpeedBuff")]
 public class SpeedBuff : TemporaryEffect
 {
-    [SerializeField] private float speedMultiplier = 2f;
+    [SerializeField] private float speedMultiplier;
 
     public override void Apply(GameObject target) {
         PlayerMovement movementController = target.GetComponent<PlayerMovement>();
