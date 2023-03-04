@@ -316,11 +316,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7078099433667581583}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c254c6afb94c147679e72336db444364, type: 3}
+  m_Script: {fileID: 11500000, guid: 21ff41022f88012ed8709a9364b5fec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 10
   velocity: 1
+  maxLife: 100
 --- !u!114 &3703491820743930561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +331,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7078099433667581583}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1ae56246b5e0dffa51f9c38a3a772e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a9d48b8c3785bde8a2635c9f8f201ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   items:

@@ -50532,9 +50532,10 @@ GameObject:
   - component: {fileID: 261695402}
   - component: {fileID: 261695403}
   - component: {fileID: 261695404}
-  - component: {fileID: 261695405}
   - component: {fileID: 261695407}
   - component: {fileID: 261695406}
+  - component: {fileID: 261695408}
+  - component: {fileID: 261695409}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -50666,7 +50667,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 261695397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44bb372f313ac2400aba29bae9bea66f, type: 3}
+  m_Script: {fileID: 11500000, guid: ba42e26e61ed52b82a6c53457754ca40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 10
@@ -50699,27 +50700,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 261695397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b1e52b1a09042bb96397dbef862622, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemText: {fileID: 288646753}
-  scoreText: {fileID: 1479439735}
-  collectSound: {fileID: 261695407}
---- !u!114 &261695405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261695397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 128bde5eb20d5c3cfa795958ec1eb2aa, type: 3}
+  m_Script: {fileID: 11500000, guid: e709a36e83a4d1cffbe6d8c2aa8e2189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   deathSound: {fileID: 261695406}
   maxLife: 100
-  currentLife: 100
+  currentLife: 0
   healthBar: {fileID: 453762130}
 --- !u!82 &261695406
 AudioSource:
@@ -50913,6 +50899,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &261695408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261695397}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6608e8bb9b434a87bf4bb492da37d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &261695409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261695397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8453e8a7b266b2fb38f5c2ca8ce62c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemText: {fileID: 288646753}
+  scoreText: {fileID: 1479439735}
+  collectSound: {fileID: 261695407}
 --- !u!1 &288646751
 GameObject:
   m_ObjectHideFlags: 0
@@ -55957,7 +55970,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1253145567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cdaa9ff12b9fd24abcd95e0dac5584b, type: 3}
+  m_Script: {fileID: 11500000, guid: 39fe299579c32143ab3452d2949d5104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3470309822287515359, guid: 04af8579c5c8c6049ba08aa40c3e5557, type: 3}
@@ -56204,7 +56217,7 @@ GameObject:
   - component: {fileID: 1479439736}
   - component: {fileID: 1479439735}
   m_Layer: 5
-  m_Name: Points
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
