@@ -50926,9 +50926,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39fe299579c32143ab3452d2949d5104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3470309822287515359, guid: 04af8579c5c8c6049ba08aa40c3e5557, type: 3}
+  bullet: {fileID: 2860903713690912485, guid: 04af8579c5c8c6049ba08aa40c3e5557, type: 3}
   firePoint: {fileID: 1307976320}
   timeBetweenShots: 0.5
+  timeBetweenShotsFrenzy: 0.1
 --- !u!1 &288646751
 GameObject:
   m_ObjectHideFlags: 0
@@ -56750,3 +56751,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1114623359982311916
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.574506
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.0147386
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955891435910586588, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
+      propertyPath: m_Name
+      value: FrenzyEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
