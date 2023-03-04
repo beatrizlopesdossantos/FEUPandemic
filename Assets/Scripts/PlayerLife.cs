@@ -9,11 +9,16 @@ public class PlayerLife : MonoBehaviour
     private PlayerMovement movement;
     private Rigidbody2D rb;
     [SerializeField] private AudioSource deathSound;
+    [SerializeField] private int maxLife = 100;
+    public int currentLife;
+    public HealthBar healthBar;
 
     private bool isAlive = true;
 
     private void Start()
     {
+        healthBar.SetMaxHealth(maxLife);
+        currentLife = maxLife;
         anim = GetComponent<Animator>();
         movement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
@@ -21,7 +26,7 @@ public class PlayerLife : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Virus") && isAlive) {
-            KillPlayer();
+            HurtPlayer(collision.gameObject.GetComponent<PlayerFollower>().damage);
         }
     }
 
@@ -31,6 +36,14 @@ public class PlayerLife : MonoBehaviour
         isAlive = false;
         anim.SetTrigger("death");
         deathSound.Play();
+    }
+
+    private void HurtPlayer(int damage) {
+        currentLife -= damage;
+        healthBar.SetHealth(currentLife);
+        if (currentLife <= 0) {
+            KillPlayer();
+        }
     }
 
     private void RestartLevel() {
