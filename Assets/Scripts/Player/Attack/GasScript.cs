@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GasScript : MonoBehaviour
 {
-    [SerializeField] private int damage = 1;
+    [SerializeField] private int damage = 10;
     [SerializeField] private float cooldownTime = 0.1f;
 
     private List<GameObject> damagedViruses = new List<GameObject>();
