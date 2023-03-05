@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Enemy/VirusHealthBar.cs.meta
+guid: e3b860db5775e154c93701e034eb3c4f
+========
+guid: d8d18cfc12609a815aa0a23f4d9b77fc
+>>>>>>>> main:Assets/Scripts/Player/Attack/GunRotation.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -4,31 +4,36 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-    private Camera mainCam;
-    private Vector3 mousePos;
-    public GameObject bullet;
-    public Transform bulletTransform;
-    public bool canFire;
-    private float timer;
-    public float timeBetweenShots;
-    // Start is called before the first frame update
-    void Start()
-    {
-        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-    }
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform firePoint;
+    private bool canFire = true;
+    private int frenzyFireCount = 0; // counts the number of frenzy effects applied
+    private float timer = 0;
+    public float timeBetweenShots = 0.5f;
+    public float timeBetweenShotsFrenzy = 0.1f;
 
-    // Update is called once per frame
     void Update()
     {
-        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        if (frenzyFireCount == 0) {
+            NormalFire();
+        } else {
+            AutomaticFire();
+        }
+    }
 
-        Vector3 rotation = mousePos - transform.position;
+    public void ActivateFrenzyFire() {
+        this.frenzyFireCount++;
+        this.timer = timeBetweenShotsFrenzy;
+    }
 
-        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+    public void DeactivateFrenzyFire() {
+        this.frenzyFireCount--;
+        this.timer = 0;
+    }
 
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
-
-        if (!canFire) {
+    private void NormalFire() {
+        if (!canFire)
+        {
             timer += Time.deltaTime;
             if (timer > timeBetweenShots)
             {
@@ -37,10 +42,20 @@ public class Shooting : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0) && canFire) {
+        if (Input.GetMouseButtonDown(0) && canFire)
+        {
             canFire = false;
-            Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+            Instantiate(bullet, firePoint.transform.position, bullet.transform.rotation);
             timer = 0;
+        }
+    }
+
+    private void AutomaticFire() {
+        if (timer <= timeBetweenShotsFrenzy) {
+            timer += Time.deltaTime;
+        } else {
+            timer = 0;
+            Instantiate(bullet, firePoint.transform.position, bullet.transform.rotation);
         }
     }
 }
