@@ -6,9 +6,17 @@ public class GasScript : MonoBehaviour
 {
     [SerializeField] private int damage = 10;
     [SerializeField] private float cooldownTime = 0.1f;
+    private Transform firePoint;
 
     private List<GameObject> damagedViruses = new List<GameObject>();
     private float lastDamageTime = 0f;
+
+    private Camera mainCam;
+
+    private void Start() {
+        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        firePoint = GameObject.FindGameObjectWithTag("FirePoint").transform;
+    }
 
     private void OnParticleCollision(GameObject collision)
     {
@@ -33,5 +41,11 @@ public class GasScript : MonoBehaviour
             damagedViruses.Clear();
             lastDamageTime = Time.time;
         }
+
+        transform.position = firePoint.position;
+
+        Vector3 mousePos = mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCam.transform.position.z));
+        Vector3 rotation = mousePos - transform.position;
+        transform.rotation = Quaternion.LookRotation(rotation, Vector3.forward);
     }
 }
