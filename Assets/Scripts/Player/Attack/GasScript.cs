@@ -42,8 +42,10 @@ public class GasScript : MonoBehaviour
             lastDamageTime = Time.time;
         }
 
-        transform.position = firePoint.position;
+        float gunRotation = firePoint.eulerAngles.z * Mathf.Deg2Rad;
+        transform.position = firePoint.position + new Vector3(-Mathf.Sin(gunRotation) * 0.3f, Mathf.Cos(gunRotation) * 0.3f, 0);
 
+        // Rotation looks weird in certain angles, did not manage to fix it
         Vector3 mousePos = mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCam.transform.position.z));
         Vector3 rotation = mousePos - transform.position;
         transform.rotation = Quaternion.LookRotation(rotation, Vector3.forward);

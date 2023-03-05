@@ -6,6 +6,8 @@ public class Shooting : MonoBehaviour
 {
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private Sprite gunSprite;
+
     private bool canFire = true;
     private int frenzyFireCount = 0; // counts the number of frenzy effects applied
     private float timer = 0;
@@ -44,6 +46,7 @@ public class Shooting : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && canFire)
         {
+            SetSprite();
             canFire = false;
             Instantiate(bullet, firePoint.transform.position, bullet.transform.rotation);
             timer = 0;
@@ -51,11 +54,23 @@ public class Shooting : MonoBehaviour
     }
 
     private void AutomaticFire() {
+        if (Input.GetMouseButton(1))
+        {
+            DeactivateFrenzyFire();
+            this.frenzyFireCount = 0; // remove all buffs
+            return;
+        }
+
+        SetSprite();
         if (timer <= timeBetweenShotsFrenzy) {
             timer += Time.deltaTime;
         } else {
             timer = 0;
             Instantiate(bullet, firePoint.transform.position, bullet.transform.rotation);
         }
+    }
+
+    private void SetSprite() {
+        firePoint.GetComponent<SpriteRenderer>().sprite = gunSprite;
     }
 }

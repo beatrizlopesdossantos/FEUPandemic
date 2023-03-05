@@ -6,6 +6,8 @@ public class Sterializing : MonoBehaviour
 {
     [SerializeField] private GameObject gas;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private Sprite gunSprite;
+
     [SerializeField] private float maxFuel = 100f;
     [SerializeField] private float fuelConsumption = 20f;
     [SerializeField] private float fuelRefill = 10f;
@@ -27,6 +29,7 @@ public class Sterializing : MonoBehaviour
     }
 
     private void UseGas() {
+        SetSprite();
         gas.SetActive(true);
         fuel -= Time.deltaTime * fuelConsumption;
     }
@@ -35,5 +38,10 @@ public class Sterializing : MonoBehaviour
         gas.SetActive(false);
         float increasedFueld = fuel + Time.deltaTime * fuelRefill;
         fuel = Mathf.Min(increasedFueld, maxFuel);
+    }
+
+    private void SetSprite()
+    {
+        firePoint.GetComponent<SpriteRenderer>().sprite = gunSprite;
     }
 }
