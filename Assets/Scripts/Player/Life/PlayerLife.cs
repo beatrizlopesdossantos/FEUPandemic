@@ -12,8 +12,10 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] private int maxLife = 100;
     public int currentLife;
     public HealthBar healthBar;
-
-    private bool isAlive = true;
+    private bool isCollidingWithEnemy = false;
+    public bool isAlive = true;
+    private int damage;
+    private PlayerFollower playerFollower;
 
     private void Start()
     {
@@ -24,9 +26,24 @@ public class PlayerLife : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Update()
+    {
+        healthBar.transform.rotation = Quaternion.Inverse(transform.rotation);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Virus") && isAlive) {
-            HurtPlayer(collision.gameObject.GetComponent<PlayerFollower>().damage);
+            playerFollower = collision.gameObject.GetComponent<PlayerFollower>();
+            isCollidingWithEnemy = true;
+            damage = collision.gameObject.GetComponent<PlayerFollower>().damage;
+            InvokeRepeating("HurtPlayer", 0f, 0.4f);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Virus") && isAlive) {
+            isCollidingWithEnemy = false;
+            CancelInvoke("HurtPlayer");
         }
     }
 
@@ -36,9 +53,12 @@ public class PlayerLife : MonoBehaviour
         isAlive = false;
         anim.SetTrigger("death");
         deathSound.Play();
+        CancelInvoke("HurtPlayer");
+        if (playerFollower != null) playerFollower.CancelInvokeAttack();
     }
 
-    private void HurtPlayer(int damage) {
+    private void HurtPlayer() {
+        if (!isCollidingWithEnemy) return;
         currentLife -= damage;
         healthBar.SetHealth(currentLife);
         if (currentLife <= 0) {

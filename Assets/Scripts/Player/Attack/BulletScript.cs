@@ -34,9 +34,13 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Virus")) {
+            Debug.Log("Virus hit");
             Destroy(gameObject);
-            VirusLife virus = collision.gameObject.GetComponent<VirusLife>();
-            virus.handleHit();
+            if (collision.gameObject.GetComponent<VirusLife>() != null) {
+                collision.gameObject.GetComponent<VirusLife>().TakeDamage(10);
+            } else {
+                Destroy(collision.gameObject);
+            }
         } else if (collision.gameObject.CompareTag("Terrain")) {
             Destroy(gameObject);
         }
