@@ -12,7 +12,7 @@ public class GasScript : MonoBehaviour
 
     private void OnParticleCollision(GameObject collision)
     {
-        if (!damagedViruses.Contains(collision.gameObject))
+        if (collision.gameObject.CompareTag("Virus") && !damagedViruses.Contains(collision.gameObject))
         {
             if (collision.gameObject.GetComponent<VirusLife>() != null)
             {
