@@ -8,6 +8,7 @@ public class BulletScript : MonoBehaviour
     private Camera mainCam;
     private Rigidbody2D rb;
     public float speed;
+    public int damage = 10;
     private float timer;
     // Start is called before the first frame update
     void Start()
@@ -34,10 +35,9 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Virus")) {
-            Debug.Log("Virus hit");
             Destroy(gameObject);
             if (collision.gameObject.GetComponent<VirusLife>() != null) {
-                collision.gameObject.GetComponent<VirusLife>().TakeDamage(10);
+                collision.gameObject.GetComponent<VirusLife>().TakeDamage(damage);
             } else {
                 Destroy(collision.gameObject);
             }

@@ -23,17 +23,14 @@ public class VirusLife : MonoBehaviour
 
     float CalculateHealth()
     {
-        Debug.Log("ghhhhhhhhh" + currentHealth / maxHealth);
         return currentHealth / maxHealth;
     }
 
     public void TakeDamage(int damage)
     {
-        Debug.Log("Virus has no health script" + damage + currentHealth);
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Debug.Log("Enemy died");
             handleDeath();
         }
         if (currentHealth > maxHealth)
