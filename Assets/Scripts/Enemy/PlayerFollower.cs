@@ -25,7 +25,7 @@ public class PlayerFollower : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Player")) {
             isCollidingWithPlayer = true;
-            InvokeRepeating("attackPlayer", 0.4f, 0.4f);
+            InvokeRepeating("attackPlayer", 0f, 0.4f);
         }
     }
 
@@ -38,5 +38,9 @@ public class PlayerFollower : MonoBehaviour
 
     private void attackPlayer() {
         if (isCollidingWithPlayer) anim.SetTrigger("attack");
+    }
+
+    public void CancelInvokeAttack() {
+        CancelInvoke("attackPlayer");
     }
 }
