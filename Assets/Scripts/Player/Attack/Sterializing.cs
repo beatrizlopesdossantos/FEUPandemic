@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sterializing : MonoBehaviour
 {
     [SerializeField] private GameObject gas;
     [SerializeField] private Transform firePoint;
     [SerializeField] private Sprite gunSprite;
+    [SerializeField] private Image abilityImage;
 
     [SerializeField] private float maxFuel = 100f;
     [SerializeField] private float fuelConsumption = 20f;
@@ -18,6 +20,7 @@ public class Sterializing : MonoBehaviour
         fuel = maxFuel;
         gas = Instantiate(gas, firePoint.transform.position, gas.transform.rotation);
         gas.SetActive(false);
+        abilityImage.fillAmount = 1;
     }
 
     private void Update() {
@@ -26,6 +29,8 @@ public class Sterializing : MonoBehaviour
         } else {
             RefillGas();
         }
+
+        abilityImage.fillAmount = 1 - fuel / maxFuel;
     }
 
     private void UseGas() {

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform firePoint;
     [SerializeField] private Sprite gunSprite;
+    [SerializeField] private Image abilityImage;
 
     private bool canFire = true;
     private int frenzyFireCount = 0; // counts the number of frenzy effects applied
@@ -14,7 +16,11 @@ public class Shooting : MonoBehaviour
     public float timeBetweenShots = 0.5f;
     public float timeBetweenShotsFrenzy = 0.1f;
 
-    void Update()
+    private void Start() {
+        abilityImage.fillAmount = 0;
+    }
+
+    private void Update()
     {
         if (frenzyFireCount == 0) {
             NormalFire();
@@ -30,7 +36,9 @@ public class Shooting : MonoBehaviour
 
     public void DeactivateFrenzyFire() {
         this.frenzyFireCount--;
-        this.timer = 0;
+        if (this.frenzyFireCount == 0) {
+            this.timer = timeBetweenShots;
+        }
     }
 
     private void NormalFire() {
@@ -42,9 +50,14 @@ public class Shooting : MonoBehaviour
                 canFire = true;
                 timer = 0;
             }
+
+            abilityImage.fillAmount = 1 - timer / timeBetweenShots;
+            return;
         }
 
-        if (Input.GetMouseButtonDown(0) && canFire)
+        abilityImage.fillAmount = 0;
+
+        if (Input.GetMouseButtonDown(0))
         {
             SetSprite();
             canFire = false;
@@ -61,6 +74,7 @@ public class Shooting : MonoBehaviour
             return;
         }
 
+        abilityImage.fillAmount = 1;
         SetSprite();
         if (timer <= timeBetweenShotsFrenzy) {
             timer += Time.deltaTime;
