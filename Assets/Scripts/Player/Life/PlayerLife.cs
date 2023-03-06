@@ -9,6 +9,7 @@ public class PlayerLife : MonoBehaviour
     private PlayerMovement movement;
     private Rigidbody2D rb;
     [SerializeField] private AudioSource deathSound;
+    [SerializeField] private AudioSource hurtSound;
     [SerializeField] private int maxLife = 100;
     public int currentLife;
     public HealthBar healthBar;
@@ -65,6 +66,8 @@ public class PlayerLife : MonoBehaviour
         healthBar.SetHealth(currentLife);
         if (currentLife <= 0) {
             KillPlayer();
+        } else {
+            hurtSound.Play();
         }
     }
 
