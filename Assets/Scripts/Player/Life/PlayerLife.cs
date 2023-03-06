@@ -34,6 +34,8 @@ public class PlayerLife : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Virus") && isAlive) {
             playerFollower = collision.gameObject.GetComponent<PlayerFollower>();
+            if (!playerFollower.enabled) return;
+
             isCollidingWithEnemy = true;
             damage = collision.gameObject.GetComponent<PlayerFollower>().damage;
             InvokeRepeating("HurtPlayer", 0f, 0.4f);
@@ -43,7 +45,7 @@ public class PlayerLife : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Virus") && isAlive) {
             isCollidingWithEnemy = false;
-            CancelInvoke("HurtPlayer");
+            CancelInvokeHurt();
         }
     }
 
@@ -53,7 +55,7 @@ public class PlayerLife : MonoBehaviour
         isAlive = false;
         anim.SetTrigger("death");
         deathSound.Play();
-        CancelInvoke("HurtPlayer");
+        CancelInvokeHurt();
         if (playerFollower != null) playerFollower.CancelInvokeAttack();
     }
 
@@ -68,5 +70,9 @@ public class PlayerLife : MonoBehaviour
 
     private void RestartLevel() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void CancelInvokeHurt() {
+        CancelInvoke("HurtPlayer");
     }
 }

@@ -15,8 +15,10 @@ public class Sterializing : MonoBehaviour
     [SerializeField] private float fuelRefill = 10f;
 
     private float fuel;
+    private PlayerLife playerLife;
 
     private void Start() {
+        playerLife = GetComponent<PlayerLife>();
         fuel = maxFuel;
         gas = Instantiate(gas, firePoint.transform.position, gas.transform.rotation);
         gas.SetActive(false);
@@ -24,6 +26,8 @@ public class Sterializing : MonoBehaviour
     }
 
     private void Update() {
+        if (!playerLife.isAlive) return;
+
         if (Input.GetMouseButton(1) && fuel > 0) {
             UseGas();
         } else {

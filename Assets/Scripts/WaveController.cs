@@ -11,6 +11,7 @@ public class WaveController : MonoBehaviour {
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private Text waveText;
+    [SerializeField] private AudioSource waveEndSound;
 
     private WaveState state;
     private EnemySpawner[] enemySpawners;
@@ -45,6 +46,7 @@ public class WaveController : MonoBehaviour {
                 break;
             case WaveState.PLAYING:
                 if (IsWaveOver()) {
+                    waveEndSound.Play();
                     state = WaveState.WAITING;
                     waveCountdown = timeBetweenWaves;
                 }

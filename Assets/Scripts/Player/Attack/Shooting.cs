@@ -16,12 +16,17 @@ public class Shooting : MonoBehaviour
     public float timeBetweenShots = 0.5f;
     public float timeBetweenShotsFrenzy = 0.1f;
 
+    private PlayerLife playerLife;
+
     private void Start() {
+        playerLife = GetComponent<PlayerLife>();
         abilityImage.fillAmount = 0;
     }
 
     private void Update()
     {
+        if (!playerLife.isAlive) return;
+
         if (frenzyFireCount == 0) {
             NormalFire();
         } else {
