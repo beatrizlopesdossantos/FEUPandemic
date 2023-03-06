@@ -9,6 +9,7 @@ public class Sterializing : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private Sprite gunSprite;
     [SerializeField] private Image abilityImage;
+    [SerializeField] private AudioSource gasSound;
 
     [SerializeField] private float maxFuel = 100f;
     [SerializeField] private float fuelConsumption = 20f;
@@ -16,6 +17,7 @@ public class Sterializing : MonoBehaviour
 
     private float fuel;
     private PlayerLife playerLife;
+    private bool usingGas = false;
 
     private void Start() {
         playerLife = GetComponent<PlayerLife>();
@@ -38,13 +40,23 @@ public class Sterializing : MonoBehaviour
     }
 
     private void UseGas() {
-        SetSprite();
-        gas.SetActive(true);
+        if (!usingGas) {
+            usingGas = true;
+            gasSound.Play();
+            SetSprite();
+            gas.SetActive(true);
+        }
+
         fuel -= Time.deltaTime * fuelConsumption;
     }
 
     private void RefillGas() {
-        gas.SetActive(false);
+        if (usingGas) {
+            gas.SetActive(false);
+            gasSound.Stop();
+            usingGas = false;
+        }
+
         float increasedFueld = fuel + Time.deltaTime * fuelRefill;
         fuel = Mathf.Min(increasedFueld, maxFuel);
     }

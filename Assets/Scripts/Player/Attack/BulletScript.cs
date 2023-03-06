@@ -7,6 +7,7 @@ public class BulletScript : MonoBehaviour
     private Vector3 mousePos;
     private Camera mainCam;
     private Rigidbody2D rb;
+    [SerializeField] private AudioSource gunSound;
     public float speed;
     public int damage = 40;
     private float timer;
@@ -22,6 +23,8 @@ public class BulletScript : MonoBehaviour
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         rot = transform.rotation.eulerAngles.z + rot + 90;
         transform.rotation = Quaternion.Euler(0, 0, rot);
+
+        gunSound.Play();
     }
 
     // Update is called once per frame
