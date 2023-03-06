@@ -8,6 +8,8 @@ public class BulletScript : MonoBehaviour
     private Camera mainCam;
     private Rigidbody2D rb;
     [SerializeField] private AudioSource gunSound;
+    [SerializeField] private AudioSource failSound;
+    [SerializeField] private AudioSource hitSound;
     public float speed;
     public int damage = 40;
     private float timer;
@@ -38,6 +40,7 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Virus")) {
+            AudioSource.PlayClipAtPoint(hitSound.clip, transform.position);
             Destroy(gameObject);
             if (collision.gameObject.GetComponent<VirusLife>() != null) {
                 collision.gameObject.GetComponent<VirusLife>().TakeDamage(damage);
@@ -45,6 +48,7 @@ public class BulletScript : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         } else if (collision.gameObject.CompareTag("Terrain")) {
+            AudioSource.PlayClipAtPoint(failSound.clip, transform.position);
             Destroy(gameObject);
         }
     }
