@@ -7,7 +7,11 @@ public class BulletScript : MonoBehaviour
     private Vector3 mousePos;
     private Camera mainCam;
     private Rigidbody2D rb;
+    [SerializeField] private AudioSource gunSound;
+    [SerializeField] private AudioSource failSound;
+    [SerializeField] private AudioSource hitSound;
     public float speed;
+    public int damage = 40;
     private float timer;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +25,8 @@ public class BulletScript : MonoBehaviour
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         rot = transform.rotation.eulerAngles.z + rot + 90;
         transform.rotation = Quaternion.Euler(0, 0, rot);
+
+        gunSound.Play();
     }
 
     // Update is called once per frame
@@ -34,14 +40,15 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Virus")) {
-            Debug.Log("Virus hit");
+            AudioSource.PlayClipAtPoint(hitSound.clip, transform.position);
             Destroy(gameObject);
             if (collision.gameObject.GetComponent<VirusLife>() != null) {
-                collision.gameObject.GetComponent<VirusLife>().TakeDamage(10);
+                collision.gameObject.GetComponent<VirusLife>().TakeDamage(damage);
             } else {
                 Destroy(collision.gameObject);
             }
         } else if (collision.gameObject.CompareTag("Terrain")) {
+            AudioSource.PlayClipAtPoint(failSound.clip, transform.position);
             Destroy(gameObject);
         }
     }

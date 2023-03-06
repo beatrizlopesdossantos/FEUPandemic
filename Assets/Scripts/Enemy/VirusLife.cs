@@ -9,12 +9,19 @@ public class VirusLife : MonoBehaviour
     [SerializeField] private int points = 100;
     private ItemCollector collector;
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private AudioSource deathSound;
     public int currentHealth;
     public Slider slider;
     public GameObject healthBar;
 
+    private Animator anim;
+    private PlayerFollower playerFollower;
+    private bool isAlive = true;
+
     private void Start() {
         collector = GameObject.FindGameObjectWithTag("Player").GetComponent<ItemCollector>();
+        anim = GetComponent<Animator>();
+        playerFollower = GetComponent<PlayerFollower>();
         currentHealth = maxHealth;
         slider.maxValue = maxHealth;
         slider.value = currentHealth;
@@ -23,17 +30,16 @@ public class VirusLife : MonoBehaviour
 
     float CalculateHealth()
     {
-        Debug.Log("ghhhhhhhhh" + currentHealth / maxHealth);
         return currentHealth / maxHealth;
     }
 
     public void TakeDamage(int damage)
     {
-        Debug.Log("Virus has no health script" + damage + currentHealth);
+        if (!isAlive) return;
+
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            Debug.Log("Enemy died");
             handleDeath();
         }
         if (currentHealth > maxHealth)
@@ -44,6 +50,14 @@ public class VirusLife : MonoBehaviour
     }
 
     public void handleDeath() {
+        deathSound.Play();
+        isAlive = false;
+        playerFollower.CancelInvokeAttack();
+        playerFollower.enabled = false;
+        anim.SetTrigger("death");
+    }
+
+    public void DestroyVirus() {
         Destroy(gameObject);
         float rand = Random.Range(0f, 1f);
         float total = 0f;

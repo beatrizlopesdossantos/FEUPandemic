@@ -10,6 +10,7 @@ public class PlayerFollower : MonoBehaviour
     [SerializeField] private float velocity = 1f;
     [SerializeField] public int maxLife;
     private bool isCollidingWithPlayer = false;
+    private PlayerLife playerLife;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class PlayerFollower : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Player")) {
+            playerLife = collision.gameObject.GetComponent<PlayerLife>();
             isCollidingWithPlayer = true;
             InvokeRepeating("attackPlayer", 0f, 0.4f);
         }
@@ -42,5 +44,6 @@ public class PlayerFollower : MonoBehaviour
 
     public void CancelInvokeAttack() {
         CancelInvoke("attackPlayer");
+        if (playerLife != null) playerLife.CancelInvokeHurt();
     }
 }

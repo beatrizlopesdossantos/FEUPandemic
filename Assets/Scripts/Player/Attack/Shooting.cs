@@ -1,19 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shooting : MonoBehaviour
 {
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private Sprite gunSprite;
+    [SerializeField] private Image abilityImage;
+
     private bool canFire = true;
     private int frenzyFireCount = 0; // counts the number of frenzy effects applied
     private float timer = 0;
     public float timeBetweenShots = 0.5f;
     public float timeBetweenShotsFrenzy = 0.1f;
 
-    void Update()
+    private PlayerLife playerLife;
+
+    private void Start() {
+        playerLife = GetComponent<PlayerLife>();
+        abilityImage.fillAmount = 0;
+    }
+
+    private void Update()
     {
+        if (!playerLife.isAlive) return;
+
         if (frenzyFireCount == 0) {
             NormalFire();
         } else {
@@ -28,7 +41,9 @@ public class Shooting : MonoBehaviour
 
     public void DeactivateFrenzyFire() {
         this.frenzyFireCount--;
-        this.timer = 0;
+        if (this.frenzyFireCount == 0) {
+            this.timer = timeBetweenShots;
+        }
     }
 
     private void NormalFire() {
@@ -40,10 +55,16 @@ public class Shooting : MonoBehaviour
                 canFire = true;
                 timer = 0;
             }
+
+            abilityImage.fillAmount = 1 - timer / timeBetweenShots;
+            return;
         }
 
-        if (Input.GetMouseButtonDown(0) && canFire)
+        abilityImage.fillAmount = 0;
+
+        if (Input.GetMouseButtonDown(0))
         {
+            SetSprite();
             canFire = false;
             Instantiate(bullet, firePoint.transform.position, bullet.transform.rotation);
             timer = 0;
@@ -51,11 +72,24 @@ public class Shooting : MonoBehaviour
     }
 
     private void AutomaticFire() {
+        if (Input.GetMouseButton(1))
+        {
+            DeactivateFrenzyFire();
+            this.frenzyFireCount = 0; // remove all buffs
+            return;
+        }
+
+        abilityImage.fillAmount = 1;
+        SetSprite();
         if (timer <= timeBetweenShotsFrenzy) {
             timer += Time.deltaTime;
         } else {
             timer = 0;
             Instantiate(bullet, firePoint.transform.position, bullet.transform.rotation);
         }
+    }
+
+    private void SetSprite() {
+        firePoint.GetComponent<SpriteRenderer>().sprite = gunSprite;
     }
 }

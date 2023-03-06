@@ -8,6 +8,7 @@ TagManager:
   - Virus
   - Bullet
   - Terrain
+  - FirePoint
   layers:
   - Default
   - TransparentFX
