@@ -11,7 +11,9 @@ public class Powerup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (audioSource != null) audioSource.Play();
+            if (audioSource != null) {
+                AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
+            }
 
             if (effect is TemporaryEffect) {
                 StartCoroutine(StartEffect(other.gameObject));
