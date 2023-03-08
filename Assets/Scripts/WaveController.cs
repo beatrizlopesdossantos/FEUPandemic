@@ -28,6 +28,7 @@ public class WaveController : MonoBehaviour {
     }
 
     private void Update() {
+        Debug.Log($"Wave state: {state}");
         switch (state) {
             case WaveState.WAITING:
                 waveCountdown -= Time.deltaTime;
@@ -105,10 +106,12 @@ public class WaveController : MonoBehaviour {
 
     private bool IsWaveOver()
     {
+        Debug.Log("Checking wave over");
         waveCheckDelay -= Time.deltaTime;
         if (waveCheckDelay <= 0f) {
             return GameObject.FindGameObjectWithTag("Virus") == null;
         }
+        Debug.Log("Wave not over");
         return false;
     }
 
