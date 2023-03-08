@@ -7,8 +7,7 @@ public class PlayerFollower : MonoBehaviour
     private GameObject objectToFollow;
     private Animator anim;
     [SerializeField] public int damage;
-    [SerializeField] private float velocity = 1f;
-    [SerializeField] public int maxLife;
+    [SerializeField] public float velocity = 1f;
     private bool isCollidingWithPlayer = false;
     private PlayerLife playerLife;
 
