@@ -46667,7 +46667,7 @@ MonoBehaviour:
     rateMultiplier: 1.1
     maxAmount: 10
     maxRate: 5
-  - enemy: {fileID: 6996661407278530012, guid: 0225d104459eaa14db55a2320ed16e0e, type: 3}
+  - enemy: {fileID: 6996661407278530012, guid: 55b8a7959154e0f178daa12630fea897, type: 3}
     startAmount: 2
     startRate: 1
     startWave: 2
@@ -46675,10 +46675,18 @@ MonoBehaviour:
     rateMultiplier: 1.1
     maxAmount: 10
     maxRate: 5
-  - enemy: {fileID: 6996661407278530012, guid: 698bec368acc63541a126f7257d9641f, type: 3}
+  - enemy: {fileID: 6996661407278530012, guid: 0225d104459eaa14db55a2320ed16e0e, type: 3}
     startAmount: 2
     startRate: 1
     startWave: 3
+    amountMultiplier: 1.5
+    rateMultiplier: 1.1
+    maxAmount: 10
+    maxRate: 5
+  - enemy: {fileID: 6996661407278530012, guid: 698bec368acc63541a126f7257d9641f, type: 3}
+    startAmount: 2
+    startRate: 1
+    startWave: 4
     amountMultiplier: 1.5
     rateMultiplier: 1.1
     maxAmount: 10
