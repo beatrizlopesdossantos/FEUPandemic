@@ -19,6 +19,7 @@ public class WaveController : MonoBehaviour {
     private int currentWave = 0;
     private float waveCountdown;
     private float waveCheckDelay = 1f;
+    private float ENEMY_SPAWNER_DELAY = 0.5f;
 
     private void Start() {
         waveCountdown = timeBetweenWaves;
@@ -69,7 +70,7 @@ public class WaveController : MonoBehaviour {
         for (int i = 0; i < enemySpawners.Length; ++i) {
             if (waveEnemies[i].startWave <= currentWave) {
                 enemySpawners[i].DoneSpawning = false;
-                StartCoroutine(enemySpawners[i].Spawn());
+                StartCoroutine(enemySpawners[i].Spawn(i * ENEMY_SPAWNER_DELAY));
             }
         }
     }
@@ -162,7 +163,10 @@ internal class EnemySpawner : ScriptableObject {
         return spawner;
     }
 
-    public IEnumerator Spawn() {for (int i = 0; i < Amount; ++i) {
+    public IEnumerator Spawn(float? delay = null) {
+        // insert delay to prevent enemies from spawning on top of each other
+        if (delay != null) yield return new WaitForSeconds(delay.Value);
+        for (int i = 0; i < Amount; ++i) {
             Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
             Instantiate(enemy, sp.position, sp.rotation);
 
