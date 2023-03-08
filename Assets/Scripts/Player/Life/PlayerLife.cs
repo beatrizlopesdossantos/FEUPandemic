@@ -79,4 +79,10 @@ public class PlayerLife : MonoBehaviour
     public void CancelInvokeHurt() {
         CancelInvoke("HurtPlayer");
     }
+
+    public void Heal(int healAmount) {
+        currentLife += healAmount;
+        if (currentLife > maxLife) currentLife = maxLife;
+        healthBar.SetHealth(currentLife);
+    }
 }

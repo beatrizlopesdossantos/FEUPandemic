@@ -5,11 +5,16 @@ using UnityEngine;
 public class Powerup : MonoBehaviour
 {
     [SerializeField] private PowerupEffect effect;
+    [SerializeField] private AudioSource audioSource;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            if (audioSource != null) {
+                AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
+            }
+
             if (effect is TemporaryEffect) {
                 StartCoroutine(StartEffect(other.gameObject));
             } else {

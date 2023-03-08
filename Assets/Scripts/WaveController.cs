@@ -11,6 +11,7 @@ public class WaveController : MonoBehaviour {
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private Text waveText;
+    [SerializeField] private AudioSource waveStartSound;
     [SerializeField] private AudioSource waveEndSound;
 
     private WaveState state;
@@ -31,6 +32,10 @@ public class WaveController : MonoBehaviour {
         switch (state) {
             case WaveState.WAITING:
                 waveCountdown -= Time.deltaTime;
+                if (waveCountdown < waveStartSound.clip.length / 2 && !waveStartSound.isPlaying) {
+                    waveStartSound.Play();
+                }
+
                 if (waveCountdown <= 0) {
                     StartNewWave();
                 }

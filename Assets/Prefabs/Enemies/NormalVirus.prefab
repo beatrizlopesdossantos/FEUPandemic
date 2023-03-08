@@ -634,6 +634,8 @@ MonoBehaviour:
     chance: 0.1
   - item: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
     chance: 0.05
+  - item: {fileID: 5037179654091842732, guid: 89a8ec12b7964d151bd5ee2f4dcbfc6f, type: 3}
+    chance: 0.1
   enemies: []
   points: 100
   maxHealth: 100

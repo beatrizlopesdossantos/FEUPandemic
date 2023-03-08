@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 5
   speedMultiplier: 2
+  audio: {fileID: 8300000, guid: adaa0477db6e5b20faf5549d0ca7d8cd, type: 3}
