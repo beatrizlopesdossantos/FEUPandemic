@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5037179654091842705}
   - component: {fileID: -7167262700083590146}
   m_Layer: 0
-  m_Name: HealthBuff
+  m_Name: Major HealthBuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3b0cc9c1a363bec9ce3d536be2ee98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 11400000, guid: a962fc55126dd96d6bc26af7f65cc359, type: 2}
+  effect: {fileID: 11400000, guid: d42076aad327d3265af0e90c1f65fa2d, type: 2}
   audioSource: {fileID: -7167262700083590146}
 --- !u!82 &-7167262700083590146
 AudioSource:

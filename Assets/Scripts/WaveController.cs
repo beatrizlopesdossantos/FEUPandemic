@@ -94,12 +94,12 @@ public class WaveController : MonoBehaviour {
                 scaledRate = info.startRate;
             }
             else {
-                scaledAmount = Mathf.FloorToInt(waveOffset * info.amountMultiplier * info.startAmount);
-                scaledRate = waveOffset * info.rateMultiplier * info.startRate;
+                scaledAmount = Mathf.FloorToInt(spawner.Amount * info.amountMultiplier);
+                scaledRate = spawner.Rate * info.rateMultiplier;
             }
 
             spawner.Amount = Mathf.Min(scaledAmount, info.maxAmount);
-            spawner.Rate = Mathf.Min(scaledRate, info.maxRate);
+            spawner.Rate = Mathf.Max(Mathf.Min(scaledRate, info.maxRate), info.minRate);
         }
     }
 
@@ -138,13 +138,14 @@ public class WaveEnemyInfo
     public float rateMultiplier = 1.1f;
     public int maxAmount = 200;
     public float maxRate = 10f;
+    public float minRate = 0.1f;
 }
 
 internal class EnemySpawner : ScriptableObject {
     private Transform enemy;
     private Transform[] spawnPoints;
-    public int Amount { private get; set; }
-    public float Rate { private get; set; }
+    public int Amount { get; set; }
+    public float Rate { get; set; }
     public bool DoneSpawning { get; set; }
 
     public void Init(Transform enemy, int amount, float rate, Transform[] spawnPoints) {
