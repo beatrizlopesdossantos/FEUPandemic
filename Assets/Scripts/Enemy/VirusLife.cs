@@ -27,7 +27,6 @@ public class VirusLife : MonoBehaviour
         slider.maxValue = maxHealth;
         slider.value = currentHealth;
         healthBar.SetActive(true);
-        Debug.Log("VirusLife: " + enemies.Count);
     }
 
     float CalculateHealth()
@@ -52,7 +51,7 @@ public class VirusLife : MonoBehaviour
     }
 
     public void handleDeath() {
-        deathSound.Play();
+        AudioSource.PlayClipAtPoint(deathSound.clip, transform.position);
         isAlive = false;
         playerFollower.CancelInvokeAttack();
         playerFollower.enabled = false;
@@ -63,11 +62,9 @@ public class VirusLife : MonoBehaviour
         Destroy(gameObject);
         if (enemies.Count >= 1)
         {
-            Debug.Log("before instanciate: " + enemies.Count);
             GameObject newEnemy = Instantiate(enemies[0], transform.position, enemies[0].transform.rotation);
             newEnemy.GetComponent<VirusLife>().enemies = new List<GameObject>(enemies);
             newEnemy.GetComponent<VirusLife>().enemies.RemoveAt(0);
-            Debug.Log("after instanciate first: " + enemies.Count);
         }
         float rand = Random.Range(0f, 1f);
         float total = 0f;

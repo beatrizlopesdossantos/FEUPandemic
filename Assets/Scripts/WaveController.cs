@@ -19,6 +19,7 @@ public class WaveController : MonoBehaviour {
     private int currentWave = 0;
     private float waveCountdown;
     private float waveCheckDelay = 1f;
+    private float ENEMY_SPAWNER_DELAY = 0.5f;
 
     private void Start() {
         waveCountdown = timeBetweenWaves;
@@ -28,7 +29,6 @@ public class WaveController : MonoBehaviour {
     }
 
     private void Update() {
-        Debug.Log($"Wave state: {state}");
         switch (state) {
             case WaveState.WAITING:
                 waveCountdown -= Time.deltaTime;
@@ -68,9 +68,9 @@ public class WaveController : MonoBehaviour {
 
         state = WaveState.SPAWNING;
         for (int i = 0; i < enemySpawners.Length; ++i) {
-            enemySpawners[i].DoneSpawning = false;
             if (waveEnemies[i].startWave <= currentWave) {
-                StartCoroutine(enemySpawners[i].Spawn());
+                enemySpawners[i].DoneSpawning = false;
+                StartCoroutine(enemySpawners[i].Spawn(i * ENEMY_SPAWNER_DELAY));
             }
         }
     }
@@ -95,23 +95,21 @@ public class WaveController : MonoBehaviour {
                 scaledRate = info.startRate;
             }
             else {
-                scaledAmount = Mathf.FloorToInt(waveOffset * info.amountMultiplier * info.startAmount);
-                scaledRate = Mathf.FloorToInt(waveOffset * info.rateMultiplier * info.startRate);
+                scaledAmount = Mathf.FloorToInt(spawner.Amount * info.amountMultiplier);
+                scaledRate = spawner.Rate * info.rateMultiplier;
             }
 
             spawner.Amount = Mathf.Min(scaledAmount, info.maxAmount);
-            spawner.Rate = Mathf.Min(scaledRate, info.maxRate);
+            spawner.Rate = Mathf.Max(Mathf.Min(scaledRate, info.maxRate), info.minRate);
         }
     }
 
     private bool IsWaveOver()
     {
-        Debug.Log("Checking wave over");
         waveCheckDelay -= Time.deltaTime;
         if (waveCheckDelay <= 0f) {
             return GameObject.FindGameObjectWithTag("Virus") == null;
         }
-        Debug.Log("Wave not over");
         return false;
     }
 
@@ -141,13 +139,14 @@ public class WaveEnemyInfo
     public float rateMultiplier = 1.1f;
     public int maxAmount = 200;
     public float maxRate = 10f;
+    public float minRate = 0.1f;
 }
 
 internal class EnemySpawner : ScriptableObject {
     private Transform enemy;
     private Transform[] spawnPoints;
-    public int Amount { private get; set; }
-    public float Rate { private get; set; }
+    public int Amount { get; set; }
+    public float Rate { get; set; }
     public bool DoneSpawning { get; set; }
 
     public void Init(Transform enemy, int amount, float rate, Transform[] spawnPoints) {
@@ -155,7 +154,7 @@ internal class EnemySpawner : ScriptableObject {
         this.Amount = amount;
         this.Rate = rate;
         this.spawnPoints = spawnPoints;
-        this.DoneSpawning = false;
+        this.DoneSpawning = true;
     }
 
     public static EnemySpawner CreateInstance(Transform enemy, int amount, float rate, Transform[] spawnPoints) {
@@ -164,7 +163,10 @@ internal class EnemySpawner : ScriptableObject {
         return spawner;
     }
 
-    public IEnumerator Spawn() {for (int i = 0; i < Amount; ++i) {
+    public IEnumerator Spawn(float? delay = null) {
+        // insert delay to prevent enemies from spawning on top of each other
+        if (delay != null) yield return new WaitForSeconds(delay.Value);
+        for (int i = 0; i < Amount; ++i) {
             Transform sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
             Instantiate(enemy, sp.position, sp.rotation);
 

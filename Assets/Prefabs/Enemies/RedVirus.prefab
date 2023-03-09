@@ -627,13 +627,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - item: {fileID: 1321917693560154382, guid: 1628d6a7707fc73e69738147aff8f132, type: 3}
-    chance: 0.2
+    chance: 0.3
   - item: {fileID: 5037179654091842732, guid: 7ce4835e8a0c93e1fb58e870d8d260d3, type: 3}
     chance: 0.1
-  - item: {fileID: 5037179654091842732, guid: 0e9473fc0bf422878a55317dba1606f7, type: 3}
+  - item: {fileID: 5037179654091842732, guid: 8918ab4cf3bcab3c38c8fbf1ad9dbae4, type: 3}
     chance: 0.1
   - item: {fileID: 1950713414997460240, guid: 1a3077dc008bb71238842a7f52675f15, type: 3}
     chance: 0.05
+  - item: {fileID: 5037179654091842732, guid: 1c377427e3de07604a14e29bb22bdc4f, type: 3}
+    chance: 0.2
   enemies:
   - {fileID: 7078099433667581583, guid: 55b8a7959154e0f178daa12630fea897, type: 3}
   points: 170

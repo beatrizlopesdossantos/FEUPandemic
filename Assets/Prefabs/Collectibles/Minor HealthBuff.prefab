@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5037179654091842735}
   - component: {fileID: 5037179654091842734}
   - component: {fileID: 5037179654091842705}
-  - component: {fileID: 529521357792983388}
+  - component: {fileID: -7167262700083590146}
   m_Layer: 0
-  m_Name: SpeedBuff
+  m_Name: Minor HealthBuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d02b133e99e2b6db6812b0c93931c415, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 317d74d4ddc4ff210bd02319955f997f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,9 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3b0cc9c1a363bec9ce3d536be2ee98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 11400000, guid: 8de3628e740e1b119bcb19145f2c6e52, type: 2}
-  audioSource: {fileID: 529521357792983388}
---- !u!82 &529521357792983388
+  effect: {fileID: 11400000, guid: a962fc55126dd96d6bc26af7f65cc359, type: 2}
+  audioSource: {fileID: -7167262700083590146}
+--- !u!82 &-7167262700083590146
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,9 +137,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5024db625aa4932ed86b47cc513ce10a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5cdf194b22afdbc1d833c17df1b07699, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.284
+  m_Volume: 0.438
   m_Pitch: 1
   Loop: 0
   Mute: 0
