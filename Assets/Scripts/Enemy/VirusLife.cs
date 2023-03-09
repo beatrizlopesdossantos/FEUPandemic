@@ -51,7 +51,7 @@ public class VirusLife : MonoBehaviour
     }
 
     public void handleDeath() {
-        deathSound.Play();
+        AudioSource.PlayClipAtPoint(deathSound.clip, transform.position);
         isAlive = false;
         playerFollower.CancelInvokeAttack();
         playerFollower.enabled = false;
