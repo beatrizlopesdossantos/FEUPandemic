@@ -56,6 +56,7 @@ public class VirusLife : MonoBehaviour
         playerFollower.CancelInvokeAttack();
         playerFollower.enabled = false;
         anim.SetTrigger("death");
+        GetComponent<PolygonCollider2D>().enabled = false;
     }
 
     public void DestroyVirus() {
