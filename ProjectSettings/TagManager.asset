@@ -9,6 +9,8 @@ TagManager:
   - Bullet
   - Terrain
   - FirePoint
+  - PowerUpTimer
+  - Container
   layers:
   - Default
   - TransparentFX

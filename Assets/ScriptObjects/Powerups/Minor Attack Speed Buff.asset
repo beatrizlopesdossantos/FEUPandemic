@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Minor Attack Speed Buff
   m_EditorClassIdentifier: 
   duration: 5
+  powerUpImage: {fileID: 21300000, guid: da51b3c667437a76ba10e415f3353175, type: 3}
   speedMultiplier: 2
-  audio: {fileID: 8300000, guid: adaa0477db6e5b20faf5549d0ca7d8cd, type: 3}

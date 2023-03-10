@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Speed Buff
   m_EditorClassIdentifier: 
   duration: 5
+  powerUpImage: {fileID: 21300000, guid: d02b133e99e2b6db6812b0c93931c415, type: 3}
   speedMultiplier: 1.5
