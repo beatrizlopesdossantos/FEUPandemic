@@ -61,7 +61,6 @@ public class PlayerLife : MonoBehaviour
     }
 
     private void HurtPlayer() {
-        anim.SetTrigger("hurt");
         if (!isCollidingWithEnemy) return;
         currentLife -= damage;
         healthBar.SetHealth(currentLife);
@@ -69,6 +68,7 @@ public class PlayerLife : MonoBehaviour
             KillPlayer();
         } else {
             hurtSound.Play();
+            anim.SetTrigger("hurt");
         }
     }
 
