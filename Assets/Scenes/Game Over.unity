@@ -523,6 +523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 510489259}
+  itemText: {fileID: 743615829}
+  scoreText: {fileID: 596244611}
 --- !u!1 &490125683
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,8 +830,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 139, y: 32.5}
-  m_SizeDelta: {x: 119.1544, y: 29.8}
+  m_AnchoredPosition: {x: 180.74219, y: 32.5}
+  m_SizeDelta: {x: 169.0912, y: 29.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &596244609
 Animator:
@@ -980,8 +982,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -19, y: 32.5}
-  m_SizeDelta: {x: 93.9815, y: 30.002}
+  m_AnchoredPosition: {x: -57, y: 32.5}
+  m_SizeDelta: {x: 82.483, y: 30.002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &743615829
 MonoBehaviour:
@@ -1136,8 +1138,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8, y: 168.81485}
-  m_SizeDelta: {x: 703.4373, y: 98.8547}
+  m_AnchoredPosition: {x: 30.8433, y: 168.81485}
+  m_SizeDelta: {x: 864.5974, y: 98.8547}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &822348696
 MonoBehaviour:
@@ -1159,7 +1161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GAMEOVER
+  m_text: GAME OVER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0d99f9204312f381cbbef371d49399f9, type: 2}
   m_sharedMaterial: {fileID: -3293959192357943548, guid: 0d99f9204312f381cbbef371d49399f9, type: 2}
@@ -1940,7 +1942,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -130.93002, y: 29.217041}
+  m_AnchoredPosition: {x: -160.23373, y: 29.217041}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1966927899

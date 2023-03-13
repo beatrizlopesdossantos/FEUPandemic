@@ -30,4 +30,10 @@ public class ItemCollector : MonoBehaviour
         score += points;
         scoreText.text = $"{score}";
     }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetInt("Score", score);
+        PlayerPrefs.SetInt("Items", items);
+    }
 }

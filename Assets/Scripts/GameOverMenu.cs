@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameOverMenu : MonoBehaviour
 {
     [SerializeField] private Slider slider;
+    [SerializeField] private Text itemText;
+    [SerializeField] private Text scoreText;
 
     public void RestartGame()
     {
@@ -37,5 +39,11 @@ public class GameOverMenu : MonoBehaviour
             slider.value = asyncLoad.progress * 100;
             yield return null;
         }
+    }
+
+    private void Start()
+    {
+        itemText.text = $"x{PlayerPrefs.GetInt("Items")}";
+        scoreText.text = $"{PlayerPrefs.GetInt("Score")} POINTS";
     }
 }
