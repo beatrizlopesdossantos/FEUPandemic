@@ -72,8 +72,9 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    private void RestartLevel() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    private void GameOver()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void CancelInvokeHurt() {
